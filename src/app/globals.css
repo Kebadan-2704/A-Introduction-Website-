@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-outfit: 'Outfit', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+
+  /* Warm light palette */
+  --color-base: #e8e0d4;
+  --color-base-light: #f0ebe4;
+  --color-base-lighter: #f7f4f0;
+  --color-base-dark: #d4cbc0;
+  --color-base-darker: #c4b9ac;
+
+  --color-primary: #6366f1;
+  --color-primary-light: #818cf8;
+  --color-primary-dark: #4f46e5;
+
+  --color-accent: #f59e0b;
+  --color-accent-light: #fbbf24;
+
+  --color-text: #2d2520;
+  --color-text-secondary: #6b5e52;
+  --color-text-muted: #9a8d80;
+
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+
+  --color-shadow-dark: #bdb1a3;
+  --color-shadow-light: #ffffff;
+}
+
+/* ===== Base ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-inter);
+  background: var(--color-base);
+  color: var(--color-text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ===== Skeuomorphic Foundation ===== */
+
+/* Raised surface — like a physical card sitting on a table */
+.skeu-raised {
+  background: var(--color-base);
+  border-radius: 20px;
+  box-shadow:
+    8px 8px 16px var(--color-shadow-dark),
+    -8px -8px 16px var(--color-shadow-light);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skeu-raised:hover {
+  box-shadow:
+    10px 10px 20px var(--color-shadow-dark),
+    -10px -10px 20px var(--color-shadow-light);
+}
+
+/* Pressed / inset surface — like a button pushed into a surface */
+.skeu-inset {
+  background: var(--color-base);
+  border-radius: 16px;
+  box-shadow:
+    inset 4px 4px 8px var(--color-shadow-dark),
+    inset -4px -4px 8px var(--color-shadow-light);
+}
+
+/* Flat card with subtle depth */
+.skeu-flat {
+  background: linear-gradient(145deg, var(--color-base-lighter), var(--color-base-dark));
+  border-radius: 18px;
+  box-shadow:
+    6px 6px 12px var(--color-shadow-dark),
+    -6px -6px 12px var(--color-shadow-light);
+}
+
+/* Selected / active state — glowing inset */
+.skeu-selected {
+  background: linear-gradient(145deg, var(--color-base-dark), var(--color-base-lighter));
+  border-radius: 18px;
+  box-shadow:
+    inset 3px 3px 6px var(--color-shadow-dark),
+    inset -3px -3px 6px var(--color-shadow-light);
+  outline: 3px solid var(--color-primary);
+  outline-offset: -3px;
+}
+
+/* Button — raised with 3D press effect */
+.skeu-btn {
+  background: linear-gradient(145deg, var(--color-base-lighter), var(--color-base-dark));
+  border-radius: 14px;
+  box-shadow:
+    5px 5px 10px var(--color-shadow-dark),
+    -5px -5px 10px var(--color-shadow-light);
+  transition: all 0.15s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.skeu-btn:hover {
+  box-shadow:
+    6px 6px 14px var(--color-shadow-dark),
+    -6px -6px 14px var(--color-shadow-light);
+}
+
+.skeu-btn:active {
+  box-shadow:
+    inset 3px 3px 6px var(--color-shadow-dark),
+    inset -3px -3px 6px var(--color-shadow-light);
+}
+
+/* Primary button — colored with 3D press */
+.skeu-btn-primary {
+  background: linear-gradient(145deg, var(--color-primary-light), var(--color-primary-dark));
+  border-radius: 14px;
+  box-shadow:
+    5px 5px 10px var(--color-shadow-dark),
+    -5px -5px 10px var(--color-shadow-light);
+  color: white;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.skeu-btn-primary:hover {
+  box-shadow:
+    6px 6px 14px var(--color-shadow-dark),
+    -6px -6px 14px var(--color-shadow-light);
+  filter: brightness(1.05);
+}
+
+.skeu-btn-primary:active {
+  box-shadow:
+    inset 3px 3px 6px rgba(0,0,0,0.2),
+    inset -3px -3px 6px rgba(255,255,255,0.1);
+}
+
+/* Circle button (play/pause) */
+.skeu-circle {
+  background: linear-gradient(145deg, var(--color-base-lighter), var(--color-base-dark));
+  border-radius: 50%;
+  box-shadow:
+    6px 6px 12px var(--color-shadow-dark),
+    -6px -6px 12px var(--color-shadow-light);
+  transition: all 0.15s ease;
+}
+
+.skeu-circle:active {
+  box-shadow:
+    inset 3px 3px 6px var(--color-shadow-dark),
+    inset -3px -3px 6px var(--color-shadow-light);
+}
+
+.skeu-circle-primary {
+  background: linear-gradient(145deg, var(--color-primary-light), var(--color-primary-dark));
+  border-radius: 50%;
+  box-shadow:
+    6px 6px 12px var(--color-shadow-dark),
+    -6px -6px 12px var(--color-shadow-light);
+  color: white;
+}
+
+/* ===== Audio Slider ===== */
+.audio-progress {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  background: var(--color-base);
+  box-shadow:
+    inset 2px 2px 4px var(--color-shadow-dark),
+    inset -2px -2px 4px var(--color-shadow-light);
+}
+
+.audio-progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, var(--color-primary-light), var(--color-primary-dark));
+  cursor: pointer;
+  box-shadow:
+    3px 3px 6px var(--color-shadow-dark),
+    -2px -2px 4px var(--color-shadow-light);
+}
+
+/* ===== Progress Bar (inset track, raised fill) ===== */
+.skeu-progress-track {
+  background: var(--color-base);
+  border-radius: 8px;
+  box-shadow:
+    inset 2px 2px 4px var(--color-shadow-dark),
+    inset -2px -2px 4px var(--color-shadow-light);
+  height: 10px;
+  overflow: hidden;
+}
+
+.skeu-progress-fill {
+  height: 100%;
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+  transition: width 0.5s ease;
+}
+
+/* ===== Equalizer Bars ===== */
+.eq-bar {
+  animation: eq-bounce var(--eq-speed, 0.5s) ease-in-out infinite alternate;
+}
+
+@keyframes eq-bounce {
+  from { height: var(--eq-min, 4px); }
+  to { height: var(--eq-max, 24px); }
+}
+
+/* ===== Confetti ===== */
+.confetti-piece {
+  position: fixed;
+  animation: confetti-fall 3s ease-out forwards;
+}
+
+@keyframes confetti-fall {
+  0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+/* ===== Embossed Text ===== */
+.text-embossed {
+  color: var(--color-text);
+  text-shadow: 1px 1px 2px var(--color-shadow-light), -1px -1px 1px var(--color-shadow-dark);
+}
+
+.text-debossed {
+  color: transparent;
+  background: var(--color-base);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 2px 2px 3px var(--color-shadow-light);
+}
+
+/* ===== Gradient Text (for headings) ===== */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-base);
+  box-shadow: inset 1px 1px 3px var(--color-shadow-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-base-darker);
+  border-radius: 4px;
+  box-shadow:
+    2px 2px 4px var(--color-shadow-dark),
+    -1px -1px 2px var(--color-shadow-light);
+}
+
+/* ===== Shimmer Loading ===== */
+.shimmer {
+  background: linear-gradient(90deg,
+    var(--color-base-dark) 25%,
+    var(--color-base-lighter) 50%,
+    var(--color-base-dark) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ===== Badge Animations ===== */
+.badge-appear {
+  animation: badge-pop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+@keyframes badge-pop {
+  0% { transform: scale(0) rotate(-20deg); opacity: 0; }
+  70% { transform: scale(1.15) rotate(5deg); }
+  100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+/* ===== Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===== Focus ===== */
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* ===== Divider — inset groove ===== */
+.skeu-divider {
+  height: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--color-shadow-dark),
+    var(--color-shadow-light)
+  );
+  border: none;
+  margin: 0;
+}
