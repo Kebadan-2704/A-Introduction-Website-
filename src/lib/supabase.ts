@@ -1,8 +1,8 @@
 import { createClient } from "@supabase/supabase-js";
 import { TRACK_ITEMS } from "./songs";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://yrzmkvaqzmfxojtywmji.supabase.co";
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlyem1rdmFxem1meG9qdHl3bWppIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ1OTg0MjEsImV4cCI6MjEwMDE3NDQyMX0.V3csvmRR2MC-BaWRZf-pEKlu23UrpQ77MwRmH8gjHto";
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://srvrxnjapbopvpgmuybi.supabase.co";
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "sb_publishable_t9N-kIX7Ot_R6gFggdSoHg_6THybCl-";
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
