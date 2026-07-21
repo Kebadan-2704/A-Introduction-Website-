@@ -26,7 +26,7 @@ import {
   Check,
 } from "lucide-react";
 import { SONGS, TOTAL_SONGS, TRACK_ITEMS } from "@/lib/songs";
-import { fetchCloudVotes, generateBatchInviteTokens, fetchAllInviteTokens, InviteTokenRecord } from "@/lib/supabase";
+import { fetchCloudVotes, generateBatchInviteTokens, fetchAllInviteTokens, clearCloudVotes, InviteTokenRecord } from "@/lib/supabase";
 
 interface VoteData {
   songId: string;
@@ -337,10 +337,11 @@ export default function AdminDashboard() {
     URL.revokeObjectURL(url);
   };
 
-  const handleReset = () => {
-    if (confirm("⚠️ Are you sure you want to reset ALL votes stored locally?")) {
+  const handleReset = async () => {
+    if (confirm("⚠️ Are you sure you want to clear ALL test votes (both Cloud and Local)?")) {
       localStorage.removeItem("worship-poll-state");
-      setAllVotes([]);
+      await clearCloudVotes();
+      await loadAllVotes();
     }
   };
 
