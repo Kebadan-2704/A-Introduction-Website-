@@ -107,6 +107,23 @@ export async function fetchCloudVotes(): Promise<CloudVoteData[]> {
   }
 }
 
+/**
+ * Clears all vote records from Supabase cloud table `blind_votes`.
+ */
+export async function clearCloudVotes(): Promise<boolean> {
+  try {
+    const { error } = await supabase.from("blind_votes").delete().neq("id", "00000000-0000-0000-0000-000000000000");
+    if (error) {
+      console.error("Clear cloud votes error:", error);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error("Clear cloud votes error:", err);
+    return false;
+  }
+}
+
 export interface InviteTokenRecord {
   id: string;
   token: string;
